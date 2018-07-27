@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+
+.left-nav{
+   border: 1px black solid;
+   width: 10px;
+   height: 10px;
+   display: block;
+
+}
+
+.display-list{
+   border: black solid 1px;
+   width: 50vw;
+   padding-left: 50px;
+   padding-top: 50px;
+   padding-right: 50px;
+}
+
+.forms{
+   border: black solid 1px;
+   width: 50vw;
+   padding-left: 50px;
+   padding-top: 50px;
+   padding-right: 50px;
+}

@@ -9,13 +9,39 @@ import { TasksService } from '../services/tasks.service';
 export class TodoListComponent implements OnInit {
 
   tasks: Array<any>;
+  newTask: any = {};
+  taskToDelete: any = {};
 
   constructor(private tasksService: TasksService) { }
 
-  ngOnInit() {
-
+  getTasks() {
+    console.log("================getTasks reached =========================");
     this.tasksService.getTasksFromDB()
-      .subscribe((response) => this.tasks = response);
+      .subscribe((response) => this.tasks = response.reverse());
+  }
+
+  deleteTask(theid) {
+    console.log("================deleteTask reached =========================");
+    console.log(theid);
+    this.tasksService.deleteTaskInDB(theid)
+      .subscribe((response) => {
+        console.log('response from deleteTaskInDB =============>', response)
+        this.getTasks();
+      });
+  }
+
+  addTask() {
+    console.log("================addTask reached =========================");
+    console.log(this.newTask);
+    this.tasksService.createTaskInDB(this.newTask)
+      .subscribe((response) => {
+        console.log('response from createTaskInDB =============>', response)
+        this.getTasks();
+      });
+  }
+
+  ngOnInit() {
+    this.getTasks();
   }
 
 }

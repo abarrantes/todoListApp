@@ -17,6 +17,7 @@ router.get('/tasks', (req, res, nex) => {
 
 //CREATE
 router.post('/tasks/create', (req, res, next) => {
+    console.log("create route reached in express =========================")
     Task.create({
             title: req.body.title,
             description: req.body.description,
@@ -33,7 +34,6 @@ router.post('/tasks/create', (req, res, next) => {
 
 //DETAILS
 router.get('/tasks/:id', (req, res, next) => {
-    // console.log(req.params);
 
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({
@@ -78,9 +78,8 @@ router.put('/tasks/update/:id', (req, res, next) => {
 
 
 //DELETE
-
 router.delete('/tasks/:id', (req, res, next) => {
-
+    console.log("delete route reached in express =========================")
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         res.status(400).json({
             message: 'specified id is not valid'

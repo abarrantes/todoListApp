@@ -1,5 +1,31 @@
-<h1>TASKS</h1>
+<div class="display-list">
 
+  <h1>TASKS</h1>
 
+  <div *ngFor="let task of tasks">
+    <hr>
+    <h4>Title: {{task.title}}</h4>
+    <h4>Description: {{task.description}}</h4>
+    <h4>Status: {{task.doneYet}}</h4>
+    <h4>{{task._id}}</h4>
+    <button (click)="deleteTask(task._id)">Delete</button>    
+    <hr>
 
-<pre>{{ tasks | json }} </pre>
+  </div>
+
+  <pre>{{ tasks | json }} </pre>
+</div>
+
+<div class="forms">
+  <form (submit)="addTask()">
+
+    <label for="title">Title: </label>
+    <input type="text" name="title" [(ngModel)]="newTask.title">
+    <br>
+    <label for="description">Description: </label>
+    <input type="text" name="description" [(ngModel)]="newTask.description">
+    <button type="submit">Submit</button>
+
+  </form>
+
+</div>

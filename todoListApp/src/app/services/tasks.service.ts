@@ -13,9 +13,17 @@ export class TasksService {
     return this.http.get('http://localhost:3000/api/tasks')
       .map((res) => res.json());
   }
+
+  createTaskInDB(newTask){
+    console.log("================= services/tasks.service/createTaskInDB was reached ===============")
+    return this.http.post('http://localhost:3000/api/tasks/create',newTask)
+      .map((res)=> res.json());
+  }
+
+  deleteTaskInDB(theid){
+    console.log(theid);
+    console.log("================= services/tasks.service/deleteTaskInDB was reached ===============")
+    return this.http.delete('http://localhost:3000/api/tasks/'+theid)
+      .map((res)=> res.json());
+  }
 }
-
-
-
-
-
